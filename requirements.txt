@@ -3,9 +3,5 @@ djangorestframework
 django-cors-headers
 pandas
 reportlab
-waitress
 whitenoise
-requests
-matplotlib
-PyQt5
 gunicorn
