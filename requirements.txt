@@ -1,0 +1,10 @@
+django>=4.0
+djangorestframework
+django-cors-headers
+pandas
+reportlab
+waitress
+whitenoise
+requests
+matplotlib
+PyQt5
