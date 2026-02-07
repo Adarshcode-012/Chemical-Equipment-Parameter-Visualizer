@@ -87,6 +87,10 @@ DATABASES = {
     }
 }
 
+# Vercel / Serverless Hack: Use /tmp for SQLite if generic Read-Only error occurs
+if os.environ.get('VERCEL'):
+    DATABASES['default']['NAME'] = '/tmp/db.sqlite3'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
