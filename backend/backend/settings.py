@@ -91,7 +91,18 @@ DATABASES = {
 
 # Vercel / Serverless Hack: Use /tmp for SQLite if generic Read-Only error occurs
 if os.environ.get('VERCEL'):
-    DATABASES['default']['NAME'] = '/tmp/db.sqlite3'
+    import shutil
+    db_path = Path('/tmp/db.sqlite3')
+    if not db_path.exists():
+        # Copy the template DB (with admin user) to /tmp
+        template_db = BASE_DIR / 'db_template.sqlite3'
+        if template_db.exists():
+            shutil.copyfile(template_db, db_path)
+            print(f"DEBUG: Restored DB from {template_db} to {db_path}")
+        else:
+            print(f"DEBUG: Template DB not found at {template_db}")
+            
+    DATABASES['default']['NAME'] = db_path
 
 
 # Password validation
