@@ -17,7 +17,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-n_-(8w!9+tdwlz0ko5$(ggepej
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ["*"] # Allow all hosts for Vercel deployment
+ALLOWED_HOSTS = ["*"]
+CORS_ORIGIN_ALLOW_ALL = True
+print("DEBUG: Loaded settings.py with ALLOWED_HOSTS=['*']")
 
 
 # Application definition
